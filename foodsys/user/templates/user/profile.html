@@ -1,0 +1,29 @@
+{% extends "user/header.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="img-circle"src="{{ user.profile.image.url }}" alt="" style="max-block-size: 200px">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+      <form class=""method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{u_form|crispy}}
+            {{p_form|crispy}}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit" name="button">Update</button>
+          </div>
+          <div class="border-top pt-3">
+            <small class="text-muted">Already Have An Account?
+              <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,123 @@
+{% extends "Products/basic.html" %}
+    {% block burgers %}
+    <h1>BURGERS</h1><br>
+    <div class="row" style="margin-left: auto;">
+      {% for product in products %}
+        {% ifequal product.category 1 %}
+            <div class="col-sm-6 col-md-4" style="margin: auto; margin-bottom: 20px;">
+              <div class="thumbnail">
+                {% if product.productimage_set.all %}
+
+                  {% for item in product.productimage_set.all %}
+                      <img class=" img-responsive" src="{{ item.image.url }}" alt="Card image">
+                  {% endfor %}
+                  {% else %}
+                      <img class=" img-responsive" src="http://calgarypma.ca/wp-content/uploads/2018/01/default-thumbnail.jpg" alt="Card image">
+                  {% endif %}
+                  <div class="caption">
+                      <a href="{{ product.get_absolute_url }}">{{product.title}}</a>
+                      <p>{{product.description|truncatewords:15}}</p>
+                      <a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                      <a href="#" class="btn-secondary" role="button">Button</a>
+              </div>
+              </div>
+            {% if forloop.counter|divisibleby:3 %}
+          </div></div><div class="row"><div class="col-md-12"><hr/></div>
+            {% else %}
+                  </div>
+            {% endif %}
+        {% endifequal %}
+      {% endfor %}
+    {% endblock %}
+
+
+    {% block fries %}
+    <div class="row" style="margin-left: auto;">
+      {% for product in products %}
+        {% ifequal product.category 2 %}
+            <div class="col-sm-6 col-md-4" style="margin: auto; margin-bottom: 20px;">
+              <div class="thumbnail">
+                {% if product.productimage_set.all %}
+
+                  {% for item in product.productimage_set.all %}
+                      <img class=" img-thumbnail img-responsive" src="{{ item.image.url }}" alt="Card image">
+                  {% endfor %}
+                  {% else %}
+                      <img class=" img-responsive" src="http://calgarypma.ca/wp-content/uploads/2018/01/default-thumbnail.jpg" alt="Card image">
+                  {% endif %}
+                  <div class="caption">
+                      <a href="{{ product.get_absolute_url }}">{{product.title}}</a>
+                      <p>{{product.description|truncatewords:15}}</p>
+                      <a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                      <a href="#" class="btn-secondary" role="button">Button</a>
+              </div>
+              </div>
+            {% if forloop.counter|divisibleby:2 %}
+          </div></div><div class="row"><div class="col-md-12"><hr/></div>
+            {% else %}
+                  </div>
+            {% endif %}
+        {% endifequal %}
+      {% endfor %}
+    {% endblock %}
+
+
+    {% block drinks %}
+    <div class="row" style="margin-left: auto;">
+      {% for product in products %}
+        {% ifequal product.category 3 %}
+            <div class="col-sm-6 col-md-4" style="margin: auto; margin-bottom: 20px;">
+              <div class="thumbnail">
+                {% if product.productimage_set.all %}
+
+                  {% for item in product.productimage_set.all %}
+                      <img class=" img-responsive" src="{{ item.image.url }}" alt="Card image">
+                  {% endfor %}
+                  {% else %}
+                      <img class=" img-responsive" src="http://calgarypma.ca/wp-content/uploads/2018/01/default-thumbnail.jpg" alt="Card image">
+                  {% endif %}
+                  <div class="caption">
+                      <a href="{{ product.get_absolute_url }}">{{product.title}}</a>
+                      <p>{{product.description|truncatewords:15}}</p>
+                      <a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                      <a href="#" class="btn-secondary" role="button">Button</a>
+              </div>
+              </div>
+            {% if forloop.counter|divisibleby:3 %}
+          </div></div><div class="row"><div class="col-md-12"><hr/></div>
+            {% else %}
+                  </div>
+            {% endif %}
+        {% endifequal %}
+      {% endfor %}
+    {% endblock %}
+
+    {% block desserts %}
+    <div class="row" style="margin-left: auto;">
+      {% for product in products %}
+        {% ifequal product.category 4 %}
+            <div class="col-sm-6 col-md-4" style="margin: auto; margin-bottom: 20px;style="width: 350px; height: 350px;"">
+              <div class="thumbnail">
+                {% if product.productimage_set.all %}
+
+                  {% for item in product.productimage_set.all %}
+                      <img  class=" img-responsive img-thumbnail" src="{{ item.image.url }}" alt="Card image">
+                  {% endfor %}
+                  {% else %}
+                      <img class=" img-responsive" src="http://calgarypma.ca/wp-content/uploads/2018/01/default-thumbnail.jpg" alt="Card image">
+                  {% endif %}
+                  <div class="caption">
+                      <a href="{{ product.get_absolute_url }}">{{product.title}}</a>
+                      <p>{{product.description|truncatewords:15}}</p>
+                      <a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                      <a href="#" class="btn-secondary" role="button">Button</a>
+              </div>
+              </div>
+            {% if forloop.counter|divisibleby:3 %}
+          </div></div><div class="row"><div class="col-md-12"><hr/></div>
+            {% else %}
+                  </div>
+            {% endif %}
+        {% endifequal %}
+      {% endfor %}
+    {% endblock %}

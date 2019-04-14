@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Mr.Cipher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "/user/css/bootstrap.css"%}"/>
+    <link rel="stylesheet" href="{% static "/user/css/style.css"%}" type="text/css" media="all" />
+    <link href="{% static "/user/css/font-awesome.css"%}" type="text/css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,600,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet"/>
+    <style media="screen">
+    .navbar-trans {
+      background: transparent;
+      }
+      .carousel-inner img{
+        width: 100%;
+        height: 100%;
+      }
+      .bg-dark{
+        background-color: transparent !important;
+      }
+      .nav-font{
+        font-family: 'Aharoni',sans-serif !important;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .my-bg {
+        background: url("static/user/images/banner3.jpg");
+        /* opacity: 0.5;
+        filter: alpha(opacity=50); */
+        width: 100%;
+        height: 100%;
+      }
+      body {
+      position: relative;
+      }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <div class="container">
+  <div class="modal" id="DefLog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h1 class="text-primary">Please Log In To The Account First.</h1>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-trans nav-font navbar-dark fixed-top">
+    <h2 class="text-warning"><span class="fa fa-align-center" aria-hidden="true"></span><a class="navbar-brand"href="" style="font-style: 'Aharoni',sans-serif; font-weight: bold;font-size: 30px;"> ZK</a></h2>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+            <span class="navbar-toggler-icon text-warning"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="navbar-nav">
+           <li><a class="nav-link text-info" href="/">Home</a></li>
+           <li><a class="nav-link text-info" href="#About">About</a></li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle text-warning" data-toggle="dropdown" href="#">Other<span class="caret"></span></a>
+             <div class="dropdown-menu">
+               <a class="dropdown-item text-info" href="#Menu">Menu</a>
+               <a class="dropdown-item text-info" href="#Review">Review</a>
+               <a class="dropdown-item text-info" href="#Services">Services</a>
+             </div>
+           </li>
+         </ul>
+         <ul class="navbar-nav ml-md-auto">
+           {% if user.is_authenticated %}
+           <li><a href="{% url 'cart'%}"><i class="fa fa-shopping-cart" style="font-size:20px"></i> Cart <span class="badge">{{request.session.items_total}}</span></a></li>
+           <li class="nav-link"><a href="{% url 'profile'%}"><span class="fa fa-dashboard"></span> profile</a></li>
+           <li class="nav-link"><a href="{% url 'logout'%}"><span class="fa fa-user"></span> LogOut</a></li>
+           {% else %}
+           <li class="nav-link"><a href="{% url 'register'%}"><span class="fa fa-user"></span> Sign Up</a></li>
+           <li class="nav-link"><a href="{% url 'login'%}"><span class="fa fa-sign-in"></span> Login</a></li>
+           {% endif %}
+         </ul>
+       </div>
+   </nav>
+</div>
+   <div id="demo" class="carousel slide" data-ride="carousel">
+     <!-- Indicators -->
+     <ul class="carousel-indicators">
+       <li data-target="#demo" data-slide-to="0" class="active"></li>
+       <li data-target="#demo" data-slide-to="1"></li>
+       <li data-target="#demo" data-slide-to="2"></li>
+     </ul>
+
+     <!-- The slideshow -->
+     <div class="carousel-inner">
+       <div class="carousel-item active">
+         <img src="{% static "user/images/slide_1.jpg" %}" width="1100" height="500">
+       </div>
+       <div class="carousel-item">
+         <img src="{% static "user/images/slide_2.jpg" %}" alt="Chicago" width="1100" height="500">
+       </div>
+       <div class="carousel-item">
+         <img src="{% static "user/images/slide_3.jpg" %}" alt="New York" width="1100" height="500">
+       </div>
+     </div>
+
+  <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  <div class="modal fade" id="ResModal" role="dialog">
+   <div class="modal-dialog">
+
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title">Successfull Reservation</h4>
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+       </div>
+       <div class="modal-body">
+         <p>Your Reservation Has Been Made.
+          Thank You For Requesting Our Service.
+          The Reservation Will Be Sent To your Contact
+         </p>
+       </div>
+       <div class="modal-footer">
+         <a href="/logout" class="btn btn-danger">Close</a>
+       </div>
+     </div>
+
+   </div>
+  </div>
+  <div class="container-fluid">
+    {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{ message }}</div>
+        {% endfor%}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div id="About" class="container-fluid py-md-3" style="padding-top:70px;padding-bottom:70px;">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 content-left-bottom text-left  pr-lg-5" style="margin: auto;">
+        <h3>Why are we Unique !</h3>
+        <p class="mt-2 text-left" style="font-weight: bold;">
+            Eating is something that everyone loves to do, and what’s better than sitting in the comfort of your home, reading your favorite book, watching some show or film or just idling with your family & friends and ordering food from your favorite restaurant at your fingertips!</p>
+        <br>
+        <p class="mt-2 text-left"><h2>Zaayka offers you this comfort !</h2></p>
+      </div>
+      <div class="col-md-4 col-sm-6 content-right-bottom text-left" style="margin: auto;">
+        <img src={% static "user/images/ab1.png"%} alt="news image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div id="Services" class="container-fluid py-md-3" style="padding-top:70px;padding-bottom:70px;background-color: red">
+    <div class="row">
+      <div class="col-sm-1" style="margin: auto;">
+        <h1 class="text-warning">SERVICES</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6" style="margin: auto;">
+        <h3>What kind of services we can offer You !</h3>
+        <p class="mt-2 text-left" style="font-weight: bold;">
+            Order Online And Get Food Delivered At Your Place!
+            We Offer Free* Home Delivery Along The Entire City For All Available Food Items!
+            So What Are You Waiting For? Place Your Order Now!</p>
+        <br>
+        {% if user.is_authenticated %}
+        <a href="/products" class="btn btn-primary stretched-link">Order Now!</a>
+        {% else %}
+        <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+        {% endif %}
+        <p class="mt-2 text-left"><h2></h2></p>
+      </div>
+      <div class="col-md-3 col-sm-6" style="margin: auto;">
+        <br>
+        <img src={% static "user/images/fhd.jpg"%} alt="news image" class="img-fluid">
+      </div>
+      <div class="col-md-3 col-sm-6" style="margin: auto;">
+        <h3>What kind of services we can offer You !</h3>
+        <p class="mt-2 text-left" style="font-weight: bold;">
+            Reserve Online And Get Table Booked For Your Special Time!
+            We Offer One Of The Best Dining Environment In The Entire City For All Available Food Items!
+            So What Are You Waiting For? Reserve Your Table Now!</p>
+        <br>
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ResModal">Reserve</button>
+        {% else %}
+        <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+        {% endif %}
+        <p class="mt-2 text-left"><h2></h2></p>
+      </div>
+      <div class="col-md-3 col-sm-6" style="margin: auto;">
+        <br>
+        <img src={% static "user/images/tab_res.jpg"%} alt="news image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="" id="Menu" class="container-fluid py-md-3" style="padding-top:70px;padding-bottom:70px;background-color: lightgoldenrodyellow">
+    <div class="row">
+      <div class="col-sm-1" style="margin: auto;">
+        <h1 class="text-danger">MENU</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-3" style="margin: auto;">
+        <div class="card" style="width:auto;">
+          <img class="card-img-top" src="{% static "/user/images/burg.jpg" %}" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Burgers</h4>
+            <p class="card-text">Variety Of Burgers Available!</p>
+            {% if user.is_authenticated %}
+            <a href="/products/#section1" class="btn btn-primary stretched-link">Order Now!</a>
+            {% else %}
+            <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3" style="margin: auto;">
+        <div class="card" style="width:auto;">
+          <img class="card-img-top" src="{% static "/user/images/fries.jpg" %}" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Fries</h4>
+            <p class="card-text">Variety Of Fries Available!</p>
+            {% if user.is_authenticated %}
+            <a href="/products/#section2" class="btn btn-primary stretched-link">Order Now!</a>
+            {% else %}
+            <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3" style="margin: auto;">
+        <div class="card" style="width:auto;">
+          <img class="card-img-top" src="{% static "/user/images/cocktail.jpg" %}" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Drinks</h4>
+            <p class="card-text">Variety Of Cocktails Available!</p>
+            {% if user.is_authenticated %}
+            <a href="/products/#section3" class="btn btn-primary stretched-link">Order Now!</a>
+            {% else %}
+            <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3" style="margin: auto;">
+        <div class="card" style="width:auto;">
+          <img class="card-img-top" src="{% static "/user/images/dessert.jpg" %}" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Desserts</h4>
+            <p class="card-text">Variety Of Desserts Available!</p>
+            {% if user.is_authenticated %}
+            <a href="/products/#section4" class="btn btn-primary stretched-link">Order Now!</a>
+            {% else %}
+            <button type="button" class="btn btn-primary stretched-link" data-toggle="modal" data-target="#DefLog">Order Now!</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="my-bg">
+  <div class="container-fluid testimonials py-5" id="Review" style="background-color: rgba(0, 0, 0, 0.7);">
+      <div class="test-info text-center">
+          <h3 class="my-md-2 my-3 text-white">Shreyas Talole</h3>
+          <ul class="list-unstyled w3ls-icons clients mb-md-4">
+              <li>
+                  <a href="#">
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star-half-o"></span>
+                  </a>
+              </li>
+          </ul>
+          <p class="text-white"><span class="fa fa-quote-left"></span> People won't believe but these guys have Amazing Discounts and Offers going on everyday.The BEST thing about their food is "It is Tasty", not overpriced and yet so Delicious.Must Try! <span class="fa fa-quote-right"></span></p>
+      </div>
+  </div>
+  </div>
+  <footer>
+    <div class="container container-fluid" style="margin-left: 70px">
+      <p><a href="#" target="blank">Contact</a>|<a href="#" target="blank">LinkedIn</a>|
+        <a href="#" target="blank">Twitter</a>|<a href="#" target="blank">Google+</a>
+      </p>
+    </div>
+  </footer>
+  </body>
+</html>

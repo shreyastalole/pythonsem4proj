@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Mr.Cipher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "/user/css/bootstrap.css"%}"/>
+    <link rel="stylesheet" href="{% static "/user/css/style.css"%}" type="text/css" media="all" />
+    <link href="{% static "/user/css/font-awesome.css"%}" type="text/css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,600,700" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet"/>
+    <style media="screen">
+    .navbar-trans {
+      background: transparent;
+      }
+      .bg-dark{
+        background-color: transparent !important;
+      }
+      ul.nav-pills {
+        top: 70px;
+        position: fixed;
+      }
+      .nav-font{
+        font-family: 'Aharoni',sans-serif !important;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      body {
+      position: relative;
+      }
+    </style>
+  </head>
+  <body data-offset="50" data-spy="scroll" data-target="#myScrollspy">
+    <nav class="navbar navbar-expand-md nav-font navbar-dark bg-secondary fixed-top">
+    <h2 class="text-warning"><span class="fa fa-align-center" aria-hidden="true"></span><a class="navbar-brand"href="/" style="font-style: 'Aharoni',sans-serif; font-weight: bold;font-size: 30px;"> ZK</a></h2>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+            <span class="navbar-toggler-icon text-warning"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="navbar-nav">
+           <li><a class="nav-link text-info" href="/">Home</a></li>
+           <li><a class="nav-link text-info" href="/#About">About</a></li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle text-warning" data-toggle="dropdown" href="#">Other<span class="caret"></span></a>
+             <div class="dropdown-menu">
+               <a class="dropdown-item text-info" href="/#Menu">Menu</a>
+               <a class="dropdown-item text-info" href="/#Review">Review</a>
+               <a class="dropdown-item text-info" href="/#Services">Services</a>
+             </div>
+           </li>
+         </ul>
+         <ul class="navbar-nav ml-md-auto">
+           {% if user.is_authenticated %}
+           <li class="nav-link"><a href="{% url 'profile'%}"><span class="fa fa-dashboard"></span> profile</a></li>
+           <li class="nav-link"><a href="{% url 'logout'%}"><span class="fa fa-user"></span> LogOut</a></li>
+           {% else %}
+           <li class="nav-link"><a href="{% url 'register'%}"><span class="fa fa-user"></span> Sign Up</a></li>
+           <li class="nav-link"><a href="{% url 'login'%}"><span class="fa fa-sign-in"></span> Login</a></li>
+           {% endif %}
+         </ul>
+       </div>
+   </nav>
+   <div class="container-fluid"  style="padding-top:70px;padding-bottom:70px;">
+  <div class="row">
+    <nav class="col-sm-1 col-2" id="myScrollspy">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#section1">BURGER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section2">FRIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section3">DRINKS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section4">DESSERTS</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-11 col-10">
+      <div id="section1" class="" style="background-color: forestgreen;">
+        <h1>BURGERS</h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/chilli_burg.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Chilli Burger</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/lamb_burg.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Lamb Burger</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4" style="margin: auto;">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="{% static "/user/images/lamb_tomato_burg.jpg" %}" alt="Card image" style="width:100%">
+            <div class="card-body">
+              <h4 class="card-title">Lamb Tomato Burger</h4>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+            </div>
+          </div>
+        </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+           <div class="card" style="width:auto;">
+             <img class="card-img-top" src="{% static "/user/images/chicken_fish_burg.jpg" %}" alt="Card image" style="width:100%">
+             <div class="card-body">
+               <h4 class="card-title">Chicken Fish Burger</h4>
+               <p class="card-text"></p>
+               <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+             </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/stuffed_bean_burg.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Stuffed Bean Burger</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/potato_corn_burg.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Potato Corn Burger</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+       </div>
+     </div>
+      <div id="section2" class="bg-warning">
+        <h1>FRIES</h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/cheese_fries.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Cheese Fries</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/belg_fries.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Belgian Fries</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4" style="margin: auto;">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="{% static "/user/images/tatertots.jpg" %}" alt="Card image" style="width:100%">
+            <div class="card-body">
+              <h4 class="card-title">Tater Tots</h4>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+            </div>
+          </div>
+        </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+           <div class="card" style="width:auto;">
+             <img class="card-img-top" src="{% static "/user/images/garlic_fries.jpg" %}" alt="Card image" style="width:100%">
+             <div class="card-body">
+               <h4 class="card-title">Garlic Fries</h4>
+               <p class="card-text"></p>
+               <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+             </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/curly_fries.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Curly Fries</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/waffle_fries.jpg" %}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">Waffle Fries</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+       </div>
+      </div>
+      <div id="section3" class="bg-secondary">
+        <h1>DRINKS</h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/seedlip_spice_tonic.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">SeedLip Spice Tonic</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/shirley_ginger.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Shirley Ginger</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4" style="margin: auto;">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="{% static "/user/images/lavendar_lemonade.jpg" %}" alt="Card image" style="width:400px;height: 400px;">
+            <div class="card-body">
+              <h4 class="card-title">Lavender Lemonade</h4>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+            </div>
+          </div>
+        </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+           <div class="card" style="width:auto;">
+             <img class="card-img-top" src="{% static "/user/images/strawberry_chamomile_martini.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+             <div class="card-body">
+               <h4 class="card-title">Strawberry Chamomile</h4>
+               <p class="card-text"></p>
+               <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+             </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/blueberry_mojito.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Blueberry Mojito</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/yushi_fizz.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Yushi Fizz</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+       </div>
+        <p></p>
+      </div>
+      <div id="section4" class="bg-danger">
+        <h1>DESSERTS</h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/vanilla_gelato.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Vanilla Gelato</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/baked_alaska.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Baked Alaska</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4" style="margin: auto;">
+          <div class="card" style="width:auto;">
+            <img class="card-img-top" src="{% static "/user/images/molasses_pie.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+            <div class="card-body">
+              <h4 class="card-title">Molasses Pie</h4>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+            </div>
+          </div>
+        </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+           <div class="card" style="width:auto;">
+             <img class="card-img-top" src="{% static "/user/images/lemon_bars.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+             <div class="card-body">
+               <h4 class="card-title">Lemon Bars</h4>
+               <p class="card-text"></p>
+               <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+             </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/tiramisu.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Tiramisu</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4" style="margin: auto;">
+            <div class="card" style="width:auto;">
+              <img class="card-img-top" src="{% static "/user/images/apple_sundae.jpg" %}" alt="Card image" style="width:100%;height: 400px;">
+              <div class="card-body">
+                <h4 class="card-title">Apple Sundae</h4>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary stretched-link">Add To Cart!</a>
+              </div>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+   <footer>
+     <div class="container container-fluid" style="margin-left: 70px">
+       <p><a href="#" target="blank">Contact</a>|<a href="#" target="blank">LinkedIn</a>|
+         <a href="#" target="blank">Twitter</a>|<a href="#" target="blank">Google+</a>
+       </p>
+     </div>
+   </footer>
+   </body>
+ </html>
